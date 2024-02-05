@@ -5,7 +5,17 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: 'modules', component: () => import('pages/VehiclePage.vue') },
+      {
+        path: 'modules',
+        component: () => import('pages/ModulePage.vue'),
+        children: [
+          {
+            path: ':module_name',
+            component: () => import('components/ModuleComponent.vue'),
+            props: true
+          }
+        ],
+      },
 
     ]
   },
